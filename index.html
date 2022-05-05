@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Memory Game</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/m.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap"
+        rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/972c594dde.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./css/normalize.css" />
+    <link rel="stylesheet" href="./css/styles.css" />
+</head>
+
+<body>
+    <main class="main">
+        <section class="sect--set">
+            <h1 class="title" id="test">memory</h1>
+            <div class="set">
+                <div class="set__cont-input-section" id="sect-inputs1">
+                    <span class="set__input-title">Select Theme</span>
+                    <div class="set__cont-inputs">
+                        <div class="set__cont-input">
+                            <input class="set__input" checked type="radio" value="number" id="number" name="theme" />
+                            <label for="number" class="set__label">Numbers</label>
+                        </div>
+                        <div class="set__cont-input">
+                            <input class="set__input" type="radio" value="icon" id="icon" name="theme" />
+                            <label for="icon" class="set__label hover-light--blue">Icons</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="set__cont-input-section" id="sect-inputs2">
+                    <span class="set__input-title">Numbers of Players</span>
+                    <div class="set__cont-inputs">
+                        <div class="set__cont-input">
+                            <input checked class="set__input" type="radio" id="1" value="1" name="numberPlayers" />
+                            <label for="1" class="set__label">1</label>
+                        </div>
+                        <div class="set__cont-input">
+                            <input class="set__input" type="radio" id="2" value="2" name="numberPlayers" />
+                            <label for="2" class="set__label hover-light--blue">2</label>
+                        </div>
+                        <div class="set__cont-input">
+                            <input class="set__input" type="radio" id="3" value="3" name="numberPlayers" />
+                            <label for="3" class="set__label hover-light--blue">3</label>
+                        </div>
+                        <div class="set__cont-input">
+                            <input class="set__input" type="radio" id="4" value="4" name="numberPlayers" />
+                            <label for="4" class="set__label hover-light--blue">4</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="set__cont-input-section" id="sect-inputs3">
+                    <span class="set__input-title">Grid Size</span>
+                    <div class="set__cont-inputs">
+                        <div class="set__cont-input">
+                            <input checked class="set__input" type="radio" id="4*4" value="4*4" name="grid" />
+                            <label for="4*4" class="set__label">4*4</label>
+                        </div>
+                        <div class="set__cont-input">
+                            <input class="set__input" type="radio" id="6x6" value="6x6" name="grid" />
+                            <label for="6x6" class="set__label hover-light--blue">6*6</label>
+                        </div>
+                    </div>
+                </div>
+                <button id="btnStart" class="set__btn-start hover-light--orange">Start Game</button>
+            </div>
+        </section>
+
+        <section class="sect--game hide ">
+            <div class="sect--game__cont-top">
+                <h2 class="title">memory</h2>
+                <div class="sect--game__cont-sets" id="sect--game__cont-sets">
+                    <button id="rest"
+                        class="sect--game__top-btn sect--game__top-btn--reset hover-light--orange">Restar</button>
+                    <button id="new-game" class="sect--game__top-btn sect--game__top-btn--new-game">New Game</button>
+                </div>
+            </div>
+
+            <div class="sect--game__cont-middle">
+                <template id="game-template">
+                    <div class="sect--game__cont-game-btn" data-value="">
+                        <i class="sect--game__btn-content hide fa-solid fa-mug-saucer" data-icon="mug"></i>
+                        <span data-number="1" class="hide sect--game__btn-content">1</span>
+                    </div>
+
+                    <div class="sect--game__cont-game-btn" data-value="">
+                        <i class="sect--game__btn-content hide fa-solid fa-bookmark" data-icon="bookmark"></i>
+                        <span data-number="2" class="hide sect--game__btn-content">2</span>
+                    </div>
+
+                    <div class="sect--game__cont-game-btn" data-value="">
+                        <i class="sect--game__btn-content hide fa-solid fa-bahai" data-icon="bahai"></i>
+                        <span data-number="3" class="hide sect--game__btn-content">3</span>
+                    </div>
+
+                    <div class="sect--game__cont-game-btn" data-value="">
+                        <i class="sect--game__btn-content hide fa-solid fa-bell" data-icon="bell"></i>
+                        <span data-number="4" class="hide sect--game__btn-content">4</span>
+                    </div>
+
+                    <div class="sect--game__cont-game-btn" data-value="">
+                        <i class="sect--game__btn-content hide fa-solid fa-atom" data-icon="atom"></i>
+                        <span data-number="5" class="hide sect--game__btn-content">5</span>
+                    </div>
+
+                    <div class="sect--game__cont-game-btn" data-value="">
+                        <i class="sect--game__btn-content hide fa-solid fa-brain" data-icon="brain"></i>
+                        <span data-number="6" class="hide sect--game__btn-content">6</span>
+                    </div>
+
+                    <div class="sect--game__cont-game-btn" data-value="">
+                        <i class="sect--game__btn-content hide fa-solid fa-bug" data-icon="bug"></i>
+                        <span data-number="7" class="hide sect--game__btn-content">7</span>
+                    </div>
+
+                    <div class="sect--game__cont-game-btn" data-value="">
+                        <i class="sect--game__btn-content hide fa-solid fa-bicycle" data-icon="bicycle"></i>
+                        <span data-number="8" class="hide sect--game__btn-content">8</span>
+                    </div>
+
+                    <div class="sect--game__cont-game-btn" data-value="">
+                        <i class="sect--game__btn-content hide fa-solid fa-fan" data-icon="fan"></i>
+                        <span data-number="9" class="hide sect--game__btn-content">9</span>
+                    </div>
+
+                    <div class="sect--game__cont-game-btn" data-value="">
+                        <i class="sect--game__btn-content hide fa-solid fa-feather" data-icon="feather"></i>
+                        <span data-number="10" class="hide sect--game__btn-content">10</span>
+                    </div>
+
+                    <div class="sect--game__cont-game-btn" data-value="">
+                        <i class="sect--game__btn-content hide fa-solid fa-key" data-icon="key"></i>
+                        <span data-number="11" class="hide sect--game__btn-content">11</span>
+                    </div>
+
+                    <div class="sect--game__cont-game-btn" data-value="">
+                        <i class="sect--game__btn-content hide fa-solid fa-socks" data-icon="socks"></i>
+                        <span data-number="12" class="hide sect--game__btn-content">12</span>
+                    </div>
+
+                    <div class="sect--game__cont-game-btn" data-value="">
+                        <i class="sect--game__btn-content hide fa-solid fa-truck-field" data-icon="truck"></i>
+                        <span data-number="13" class="hide sect--game__btn-content">13</span>
+                    </div>
+
+                    <div class="sect--game__cont-game-btn" data-value="">
+                        <i class="sect--game__btn-content hide fa-solid fa-chess-knight" data-icon="chess"></i>
+                        <span data-number="14" class="hide sect--game__btn-content">14</span>
+                    </div>
+
+                    <div class="sect--game__cont-game-btn" data-value="">
+                        <i class="sect--game__btn-content hide fa-solid fa-chess-king" data-icon="chess"></i>
+                        <span data-number="15" class="hide sect--game__btn-content">15</span>
+                    </div>
+
+                    <div class="sect--game__cont-game-btn" data-value="">
+                        <i class="sect--game__btn-content hide fa-solid fa-award" data-icon="award"></i>
+                        <span data-number="16" class="hide sect--game__btn-content">16</span>
+                    </div>
+
+                    <div class="sect--game__cont-game-btn" data-value="">
+                        <i class="sect--game__btn-content hide fa-solid fa-bag-shopping" data-icon="bag"></i>
+                        <span data-number="17" class="hide sect--game__btn-content">17</span>
+                    </div>
+
+                    <div class="sect--game__cont-game-btn" data-value="">
+                        <i class="sect--game__btn-content hide fa-brands fa-apple" data-icon="apple"></i>
+                        <span data-number="18" class="hide sect--game__btn-content">18</span>
+                    </div>
+                </template>
+            </div>
+
+            <div class="sect--game__cont-bottom">
+                <template id="game-info-template">
+                    <div class="sect--game__info">
+                        <span class="sect--game__info--name"></span>
+                        <span class="sect--game__info--value"></span>
+                    </div>
+                </template>
+            </div>
+        </section>
+
+        <section class="modal">
+            <div class="modal__content">
+                <template id="modal-span">
+                    <div class="modal__cont-top">
+                        <span class="modal__title"></span>
+                        <span class="modal__subtitle"></span>
+                    </div>
+
+                    <ul class="modal__ul">
+                        <li class="modal__li">
+                            <span class="modal__span-name"></span>
+                            <span class="modal__span-value"></span>
+                        </li>
+                    </ul>
+
+                    <div class="modal__cont-bottom">
+                        <span class="modal__btn modal__btn--reset">Restart</span>
+                        <span class="modal__btn modal__btn--new-game">Setup New Game</span>
+                    </div>
+    
+                </template>
+                        
+            </div>
+        </section>
+    </main>
+    <script src="./js/app.js" type="module"></script>
+</body>
+
+</html>

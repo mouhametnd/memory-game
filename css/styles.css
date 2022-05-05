@@ -1,0 +1,514 @@
+:root {
+  --clrDarkTangerine: rgb(253, 162, 20);
+  --clrLightTangerine: rgb(255, 184, 74);
+  --clrSpindle: rgb(188, 206, 217);
+  --clrArapawa: rgb(48, 72, 89);
+  --clrTangaroa: rgb(21, 41, 56);
+  --clrWhiteSmoke: rgb(242, 242, 242);
+  --clrBermudaGrey: rgb(113, 145, 165);
+  --clrShakespeare: rgb(99, 149, 184);
+  --clrPattensBlue: rgb(223, 231, 236);
+  --clrSnow: rgb(252, 252, 252);
+  --modalClr: rgb(90, 104, 115);
+  --font-family: "Atkinson Hyperlegible", sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+*:not(input),
+*::before:not(input),
+*::after:not(input) {
+  user-select: none;
+}
+
+ul,
+li {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+h1,
+h2,
+p,
+span {
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+svg {
+  pointer-events: none;
+}
+
+body {
+  background-color: var(--clrTangaroa);
+  font-family: var(--font-family);
+  min-height: 100vh;
+}
+
+.main {
+  padding: 30px;
+  display: flex;
+}
+
+.bg-white {
+  padding: 0;
+  padding-inline: 10px;
+  gap: 30px;
+  height: 100vh;
+  justify-content: space-between;
+  background-color: #fff;
+}
+
+html body .title {
+  font-size: clamp(30px, 3vw, 40px);
+  text-align: center;
+}
+
+@media screen and (hover: hover) {
+  html body .hover-light--orange:hover {
+    background-color: var(--clrLightTangerine);
+  }
+}
+
+@media screen and (hover: hover) {
+  html body .hover-light-blue:hover {
+    background-color: var(--clrArapawa);
+  }
+}
+
+html body .selected::before {
+  clip-path: circle(0% at 50% 50%);
+}
+
+html body .solved {
+  background-color: var(--clrSpindle);
+}
+html body .solved::before {
+  clip-path: circle(0% at 50% 50%);
+}
+
+html body .hide {
+  display: none;
+}
+
+html body .show {
+  display: block;
+}
+
+/*****************  section set  ************************/
+.sect--set {
+  height: max-content;
+  width: min(100%, 450px);
+  margin: auto;
+  color: var(--clrSnow);
+}
+.sect--set .title {
+  padding-bottom: 20px;
+}
+
+.set {
+  background-color: var(--clrSnow);
+  display: flex;
+  flex-flow: wrap column;
+  gap: 30px;
+  padding: 30px;
+  border-radius: 20px;
+}
+.set__input-title {
+  color: var(--clrBermudaGrey);
+  font-size: 20px;
+  font-weight: 700;
+}
+.set__cont-inputs {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-evenly;
+  gap: 30px;
+}
+.set__cont-input {
+  width: 100%;
+}
+.set__label {
+  display: inline-block;
+  margin-top: 15px;
+  width: 100%;
+  padding: 10px;
+  font-weight: 700;
+  text-align: center;
+  color: var(--clrSnow);
+  border-radius: 20px;
+  background-color: var(--clrSpindle);
+  transition: 0.1s linear background-color;
+  cursor: pointer;
+}
+@media screen and (hover: hover) {
+  .set__label:hover {
+    background-color: var(--clrShakespeare);
+  }
+}
+.set__input {
+  display: none;
+}
+.set__input:checked + label {
+  background-color: var(--clrArapawa);
+}
+.set__btn-start {
+  display: inline-block;
+  color: var(--clrSnow);
+  background-color: var(--clrDarkTangerine);
+  padding: 15px;
+  border-radius: 30px;
+  border: none;
+  outline: none;
+  transition: 0.1 linear background-color;
+  cursor: pointer;
+}
+
+/******************* game section top *******************/
+.sect--game {
+  display: none;
+  flex-flow: column;
+  justify-content: space-between;
+  justify-content: space-around;
+  width: 100%;
+  gap: 30px;
+  height: 100%;
+}
+.sect--game--show {
+  display: flex;
+}
+.sect--game__cont-top {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  gap: 20px;
+}
+@media screen and (min-width: 768px) {
+  .sect--game__cont-top {
+    flex-flow: row;
+    justify-content: space-between;
+    padding-inline: 160px;
+  }
+}
+.sect--game__cont-sets {
+  justify-content: space-evenly;
+  height: max-content;
+  align-self: center;
+  display: flex;
+  gap: 20px;
+}
+.sect--game__top-btn {
+  color: var(--clrSnow);
+  border-radius: 20px;
+  outline: none;
+  border: none;
+  font-weight: 700;
+  height: max-content;
+  padding: 8px 25px;
+  cursor: pointer;
+}
+.sect--game__top-btn--reset {
+  background-color: var(--clrDarkTangerine);
+}
+.sect--game__top-btn--new-game {
+  background-color: var(--clrPattensBlue);
+  color: var(--clrArapawa);
+  transition: 0.1s linear background-color, color 0.1s linear;
+}
+@media screen and (hover: hover) {
+  .sect--game__top-btn--new-game:hover {
+    color: var(--clrSnow);
+    background-color: var(--clrShakespeare);
+  }
+}
+
+/*************** game section middle container *************/
+.sect--game__cont-middle {
+  display: grid;
+  gap: 15px;
+  max-width: 600px;
+  height: max-content;
+  margin-inline: auto;
+  justify-items: center;
+  gap: 20px;
+}
+@media screen and (min-width: 768px) {
+  .sect--game__cont-middle {
+    gap: 25px;
+  }
+}
+.sect--game__cont-middle--4-columns {
+  grid-template-columns: repeat(4, 1fr);
+}
+.sect--game__cont-middle--4-columns .sect--game__cont-game-btn {
+  height: 45px;
+  width: 45px;
+}
+@media screen and (min-width: 768px) {
+  .sect--game__cont-middle--4-columns .sect--game__cont-game-btn {
+    height: 85px;
+    width: 85px;
+  }
+}
+.sect--game__cont-middle--6-columns {
+  grid-template-columns: repeat(6, 1fr);
+}
+.sect--game__cont-middle--6-columns .sect--game__cont-game-btn {
+  width: 40px;
+  height: 40px;
+}
+@media screen and (min-width: 768px) {
+  .sect--game__cont-middle--6-columns .sect--game__cont-game-btn {
+    width: 60px;
+    height: 60px;
+  }
+}
+.sect--game__cont-game-btn {
+  position: relative;
+  display: flex;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background-color: var(--clrDarkTangerine);
+  cursor: pointer;
+}
+.sect--game__cont-game-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: var(--clrArapawa);
+  clip-path: circle(100% at 50% 50%);
+  transition: 0.2s linear clip-path, background-color 0.25s linear;
+}
+@media screen and (hover: hover) {
+  .sect--game__cont-game-btn:hover::before {
+    background-color: var(--clrBermudaGrey);
+  }
+}
+.sect--game__cont-game-btn--selected {
+  pointer-events: none;
+}
+.sect--game__cont-game-btn--selected::before {
+  clip-path: circle(0% at 50% 50%);
+}
+.sect--game__cont-game-btn--resolved {
+  background-color: var(--clrSpindle);
+  pointer-events: none;
+}
+.sect--game__cont-game-btn--resolved::before {
+  clip-path: circle(0% at 50% 50%);
+}
+.sect--game__btn-content {
+  margin: auto;
+  font-weight: 700;
+  color: var(--clrSnow);
+  font-size: 20px;
+  pointer-events: none;
+}
+@media screen and (min-width: 768px) {
+  .sect--game__btn-content {
+    font-size: 33px;
+  }
+}
+
+/*********************  game section bottom ****************************/
+.sect--game__cont-bottom {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-content: center;
+  gap: 20px;
+}
+.sect--game__cont-bottom--multyplayer {
+  gap: 50px;
+}
+@media screen and (min-width: 548px) {
+  .sect--game__cont-bottom {
+    gap: 20px;
+    flex-flow: row;
+  }
+}
+@media screen and (min-width: 768px) {
+  .sect--game__cont-bottom {
+    margin-bottom: 40px;
+  }
+}
+.sect--game__info {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  padding: 18px 20px;
+  width: min(100%, 230px);
+  border-radius: 10px;
+  background-color: var(--clrPattensBlue);
+}
+.sect--game__info::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: calc(50% - 15px);
+  transform: rotate(46deg);
+  width: 30px;
+  height: 30px;
+  background-color: var(--clrDarkTangerine);
+  display: none;
+}
+.sect--game__info--active {
+  background-color: var(--clrDarkTangerine);
+}
+.sect--game__info--active::before {
+  display: block;
+}
+.sect--game__info--active .sect--game__info--name {
+  color: var(--clrSnow);
+}
+.sect--game__info--active .sect--game__info--value {
+  color: var(--clrSnow);
+}
+.sect--game__info--name {
+  color: var(--clrBermudaGrey);
+}
+.sect--game__info--value {
+  font-weight: 700;
+  color: var(--clrArapawa);
+}
+
+/**************** modal section *******************/
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  display: none;
+  padding: 15px;
+  background-color: var(--modalClr);
+}
+.modal--show {
+  display: flex;
+}
+.modal__content {
+  display: flex;
+  flex-flow: column wrap;
+  gap: 30px;
+  margin: auto;
+  height: max-content;
+  width: min(100%, 500px);
+  padding: 20px 20px;
+  background-color: var(--clrSnow);
+  border-radius: 10px;
+}
+.modal__cont-top {
+  display: flex;
+  flex-flow: column;
+  text-align: center;
+  gap: 10px;
+}
+.modal__title {
+  color: var(--clrTangaroa);
+  font-weight: 700;
+  font-size: clamp(25px, 3vw, 33px);
+}
+.modal__subtitle {
+  color: var(--clrBermudaGrey);
+  font-size: 14px;
+  font-weight: 700;
+}
+.modal__ul {
+  display: flex;
+  flex-flow: column wrap;
+  gap: 20px;
+}
+.modal__li {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  border-radius: 10px;
+  background-color: var(--clrPattensBlue);
+  padding: 18px;
+}
+.modal__li--winner {
+  background-color: var(--clrArapawa);
+}
+.modal__li--winner .modal__span-name,
+.modal__li--winner .modal__span-value {
+  color: var(--clrSnow);
+}
+.modal__span-name {
+  color: var(--clrBermudaGrey);
+  font-weight: 700;
+  font-size: clamp(15px, 3vw, 18px);
+  height: max-content;
+  align-self: center;
+  letter-spacing: 0.7px;
+}
+.modal__span-value {
+  font-weight: 700;
+  color: var(--clrArapawa);
+  font-size: clamp(18px, 3vw, 30px);
+  letter-spacing: 0.7px;
+}
+.modal__cont-bottom {
+  display: flex;
+  flex-flow: column wrap;
+  gap: 20px;
+}
+@media screen and (min-width: 748px) {
+  .modal__cont-bottom {
+    flex-flow: row;
+  }
+}
+.modal__btn {
+  color: var(--clrSnow);
+  border-radius: 20px;
+  outline: none;
+  border: none;
+  width: 100%;
+  font-weight: 700;
+  height: max-content;
+  padding: 10px 25px;
+  cursor: pointer;
+  text-align: center;
+}
+.modal__btn--reset {
+  background-color: var(--clrDarkTangerine);
+}
+@media screen and (hover: hover) {
+  .modal__btn--reset:hover {
+    background-color: var(--clrLightTangerine);
+  }
+}
+.modal__btn--new-game {
+  background-color: var(--clrPattensBlue);
+  color: var(--clrArapawa);
+  transition: 0.1s linear background-color, color 0.1s linear;
+}
+@media screen and (hover: hover) {
+  .modal__btn--new-game:hover {
+    color: var(--clrSnow);
+    background-color: var(--clrShakespeare);
+  }
+}
+
+/*# sourceMappingURL=styles.css.map */
