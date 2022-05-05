@@ -1,4 +1,4 @@
-# Frontend Mentor: CalCulator App Challenge
+# Frontend Mentor: Memory Game App Challenge
  
 ## Welcome 🍃
 
@@ -7,7 +7,7 @@ This memory game was a cool project to put into practice my Responsive Design an
 ## Links
 - My Linkedin [Linkedin](https://www.linkedin.com/in/mouhametndiaye/)
 - My email ahmetndiaye404@gmail.com
-- Live Project [Calculator App](https://mouhametnd-calculator.netlify.app/)
+- Live Project [Memory Game](https://mouhametnd-momory-game.netlify.app/)
 - Challenged by [Frontend Mentor](https://www.frontendmentor)
 
 ## Challenge  
@@ -18,8 +18,7 @@ Your users should be able to:
 - Play the Memory game either solo or multiplayer (up to 4 players)
 - Set the theme to use numbers or icons within the tiles
 - Choose to play on either a 6x6 or 4x4 grid
-- Can restart the game with the same settings or go back to the settings modal
-.
+- Can restart the game with the same settings or go back to the settings modal.
 
 ## Game Design
 ![Design preview for the Gsame app coding challenge](./assets/memory-challenge-small.gif)
